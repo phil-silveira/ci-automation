@@ -14,7 +14,7 @@ before_script:
 script:
   - ../flutter/bin/flutter analyze
   - ../flutter/bin/flutter test
-  - ../flutter/bin/flutter drive --target=test_driver/app.dart
-# cache:
-#   directories:
-#     - $HOME/.pub-cache
+  # - ../flutter/bin/flutter drive --target=test_driver/app.dart
+cache:
+  directories:
+    - $HOME/.pub-cache
