@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'config.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -8,7 +10,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: Config.debug,
+      showSemanticsDebugger: Config.debug,
+      title: 'CI Automation',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
