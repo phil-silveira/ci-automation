@@ -8,14 +8,12 @@ addons:
     packages:
       - libstdc++6
       - fonts-droid-fallback
-# before_script:
-#   - git clone https://github.com/flutter/flutter.git -b stable
-#   - ./flutter/bin/flutter doctor
+before_script:
+  - git clone https://github.com/flutter/flutter.git -b stable .. 
+  - ../flutter/bin/flutter doctor
 script:
- - ls
- - ls /
- 
-  # - ./flutter/bin/flutter test
+  - ../flutter/bin/flutter analyze
+  - ../flutter/bin/flutter test
 # cache:
 #   directories:
 #     - $HOME/.pub-cache
