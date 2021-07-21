@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: Config.debug,
-      showSemanticsDebugger: Config.debug,
       title: 'CI Automation',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -55,11 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+              key: Key('counter'),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        key: Key('increment'),
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
