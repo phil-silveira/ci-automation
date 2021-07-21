@@ -1,0 +1,40 @@
+language: dart
+dart:
+  - stable
+
+env:
+  global:
+    - FLUTTER_GITHUB=https://github.com/flutter/flutter.git
+    - FLUTTER=../flutter/bin/flutter
+install:
+  - git clone $FLUTTER_GITHUB -b stable ../flutter 
+  - $FLUTTER doctor
+  - $FLUTTER pub get
+
+jobs:
+  include:
+    - stage: Check lint
+      script:
+        - $FLUTTER analyze
+    - stage: Run unit tests
+      script:
+        - $FLUTTER test
+# os:
+#   - linux
+# sudo: false
+# addons:
+#   apt:
+#     sources:
+#       - ubuntu-toolchain-r-test 
+#     packages:
+#       - libstdc++6
+#       - fonts-droid-fallback
+# before_script:
+ 
+# script:
+#   - ../flutter/bin/flutter analyze
+#   - ../flutter/bin/flutter test
+#   # - ../flutter/bin/flutter drive --target=test_driver/app.dart
+# cache:
+#   directories:
+#     - $HOME/.pub-cache
