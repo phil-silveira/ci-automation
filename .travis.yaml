@@ -6,6 +6,7 @@ env:
   global:
     - FLUTTER_GITHUB=https://github.com/flutter/flutter.git
     - FLUTTER=../flutter/bin/flutter
+    - APP=ci_automation
 install:
   - git clone $FLUTTER_GITHUB -b stable ../flutter 
   - $FLUTTER doctor
@@ -19,6 +20,20 @@ jobs:
     - stage: Run unit tests
       script:
         - $FLUTTER test
+    - stage: iOS Integration Tests
+      os: osx
+      osx_image: xcode11
+      before_script:
+        - open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
+        - export HOMEBREW_NO_AUTO_UPDATE=1
+        - brew install libimobiledevice
+        - brew install ideviceinstaller
+        - brew install ios-deploy
+        - brew install cocoapods || echo 'ignore exit(1)'
+        - brew link --overwrite cocoapods
+      script:
+        - cd $APP
+        - $FLUTTER driver --target=test_driver/app.dart77
 # os:
 #   - linux
 # sudo: false
