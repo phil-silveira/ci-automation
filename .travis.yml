@@ -48,5 +48,5 @@ jobs:
         - $FLUTTER --version
         - $FLUTTER doctor
         - cd $APP
-        - $FLUTTER_UP devices
-        - $FLUTTER_UP driver --target=test_driver/app.dart
+        - $FLUTTER devices
+        - $FLUTTER driver --target=test_driver/app.dart
